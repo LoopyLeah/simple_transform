@@ -1,6 +1,6 @@
-# **How to use **
+# How to use
 
-- ****Clone this Repo
+- Clone this Repo
   
 - make sure you have python install and do pip install numpty
   
