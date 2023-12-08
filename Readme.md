@@ -2,7 +2,7 @@
 
 - Clone this Repo
 
-- make sure you have python install and do pip install numpty
+- make sure you have python installed and do pip install numpty
 
 - in the directory type in "python go.py"
 
