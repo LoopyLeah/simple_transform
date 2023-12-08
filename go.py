@@ -7,13 +7,12 @@ import os
 # Transformation Settings
 #-----------------------------------------------------------------------------------------
 
-FILE_NAME = 'in'                       # Filename without extension
+#FILE_NAME = 'in'                       # Filename without extension
 FOLDER_NAME_UNTRANSFORMED = 'stl/'
 FOLDER_NAME_TRANSFORMED = 'stl_transformed/'    # Make sure this folder exists
 CONE_ANGLE = 16                                 # Transformation angle
 REFINEMENT_ITERATIONS = 1                       # refinement iterations of the stl. 2-3 is a good start for regular stls. If its already uniformaly fine, use 0 or 1. High number cause huge models and long script runtimes
 TRANSFORMATION_TYPE = 'outward'                 # type of the cone: 'inward' & 'outward'
-
 
 def transformation_kegel(points, cone_angle_rad, cone_type):
     """
@@ -105,8 +104,17 @@ def transformation_STL_file(path, cone_type, cone_angle_deg, nb_iterations):
     return my_mesh_transformed
 
 startzeit = time.time()
-transformed_STL = transformation_STL_file(path=FOLDER_NAME_UNTRANSFORMED + FILE_NAME + '.stl', cone_type=TRANSFORMATION_TYPE, cone_angle_deg=CONE_ANGLE, nb_iterations=REFINEMENT_ITERATIONS)
-transformed_STL.save(FOLDER_NAME_TRANSFORMED + FILE_NAME + '_' + TRANSFORMATION_TYPE + '_' + str(CONE_ANGLE) + 'deg_transformed.stl')
-os.remove(path=FOLDER_NAME_UNTRANSFORMED + FILE_NAME + '.stl')
+
+cwd = os.getcwd()
+
+for FILE_NAME in os.listdir(FOLDER_NAME_UNTRANSFORMED):
+    f = os.path.join(FOLDER_NAME_UNTRANSFORMED, FILE_NAME)
+    if os.path.isfile(f):
+        print("Working on "+FILE_NAME)
+        transformed_STL = transformation_STL_file(path=FOLDER_NAME_UNTRANSFORMED + FILE_NAME, cone_type=TRANSFORMATION_TYPE, cone_angle_deg=CONE_ANGLE, nb_iterations=REFINEMENT_ITERATIONS)
+        transformed_STL.save(FOLDER_NAME_TRANSFORMED + FILE_NAME)
+        os.remove(path=FOLDER_NAME_UNTRANSFORMED + FILE_NAME)
+        print(FILE_NAME+" Complete!")
+
 endzeit = time.time()
 print('Transformation time:', endzeit - startzeit)
