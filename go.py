@@ -14,6 +14,12 @@ CONE_ANGLE = 16                                 # Transformation angle
 REFINEMENT_ITERATIONS = 1                       # refinement iterations of the stl. 2-3 is a good start for regular stls. If its already uniformaly fine, use 0 or 1. High number cause huge models and long script runtimes
 TRANSFORMATION_TYPE = 'outward'                 # type of the cone: 'inward' & 'outward'
 
+
+def makedir(dir):
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+
+
 def transformation_kegel(points, cone_angle_rad, cone_type):
     """
     Computes the cone-transformation (x', y', z') = (x / cos(angle), y / cos(angle), z + \sqrt{x^{2} + y^{2}} * tan(angle))
@@ -105,7 +111,9 @@ def transformation_STL_file(path, cone_type, cone_angle_deg, nb_iterations):
 
 startzeit = time.time()
 
-cwd = os.getcwd()
+makedir(FOLDER_NAME_UNTRANSFORMED)
+makedir(FOLDER_NAME_TRANSFORMED)
+
 
 for FILE_NAME in os.listdir(FOLDER_NAME_UNTRANSFORMED):
     f = os.path.join(FOLDER_NAME_UNTRANSFORMED, FILE_NAME)
