@@ -1,13 +1,13 @@
 import numpy as np
 from stl import mesh
 import time
-
+import os
 
 #-----------------------------------------------------------------------------------------
 # Transformation Settings
 #-----------------------------------------------------------------------------------------
 
-FILE_NAME = 'tower_01_-20'                       # Filename without extension
+FILE_NAME = 'in'                       # Filename without extension
 FOLDER_NAME_UNTRANSFORMED = 'stl/'
 FOLDER_NAME_TRANSFORMED = 'stl_transformed/'    # Make sure this folder exists
 CONE_ANGLE = 16                                 # Transformation angle
@@ -107,5 +107,6 @@ def transformation_STL_file(path, cone_type, cone_angle_deg, nb_iterations):
 startzeit = time.time()
 transformed_STL = transformation_STL_file(path=FOLDER_NAME_UNTRANSFORMED + FILE_NAME + '.stl', cone_type=TRANSFORMATION_TYPE, cone_angle_deg=CONE_ANGLE, nb_iterations=REFINEMENT_ITERATIONS)
 transformed_STL.save(FOLDER_NAME_TRANSFORMED + FILE_NAME + '_' + TRANSFORMATION_TYPE + '_' + str(CONE_ANGLE) + 'deg_transformed.stl')
+os.remove(path=FOLDER_NAME_UNTRANSFORMED + FILE_NAME + '.stl')
 endzeit = time.time()
 print('Transformation time:', endzeit - startzeit)
