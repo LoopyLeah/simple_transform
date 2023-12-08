@@ -6,7 +6,7 @@ import os
 #-----------------------------------------------------------------------------------------
 # Transformation Settings
 #-----------------------------------------------------------------------------------------
-
+ 
 #FILE_NAME = 'in'                       # Filename without extension
 FOLDER_NAME_UNTRANSFORMED = 'stl_insert/'
 FOLDER_NAME_TRANSFORMED = 'stl_transformed/'    # Make sure this folder exists
