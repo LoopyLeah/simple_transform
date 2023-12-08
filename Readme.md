@@ -1,7 +1,7 @@
 [paper](https://www.researchgate.net/publication/354726760_A_Novel_Slicing_Strategy_to_Print_Overhangs_without_Support_Material)
 
-[original repo](https://github.com/RotBotSlicer/Transform/tree/master)
-cloned from this repo, built for usability. Some pros
+
+cloned from this [repo](https://github.com/RotBotSlicer/Transform/tree/master), built for usability. Some pros
 
 - slices any stl file from it's input folder
 
