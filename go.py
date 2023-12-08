@@ -8,7 +8,7 @@ import os
 #-----------------------------------------------------------------------------------------
 
 #FILE_NAME = 'in'                       # Filename without extension
-FOLDER_NAME_UNTRANSFORMED = 'stl/'
+FOLDER_NAME_UNTRANSFORMED = 'stl_insert/'
 FOLDER_NAME_TRANSFORMED = 'stl_transformed/'    # Make sure this folder exists
 CONE_ANGLE = 16                                 # Transformation angle
 REFINEMENT_ITERATIONS = 1                       # refinement iterations of the stl. 2-3 is a good start for regular stls. If its already uniformaly fine, use 0 or 1. High number cause huge models and long script runtimes
